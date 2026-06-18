@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jacksarmok.github.io/jiankaiyun-com-cn/sitemap.xml

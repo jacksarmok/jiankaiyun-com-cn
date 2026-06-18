@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>再次发现 · 开云</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #1e1e2a;
+            background: #faf9f7;
+        }
+        a {
+            color: #b63a2a;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(182, 58, 42, 0.25);
+            transition: border-color 0.2s, background 0.2s;
+            font-weight: 500;
+        }
+        a:hover {
+            border-bottom-color: #b63a2a;
+            background: rgba(182, 58, 42, 0.04);
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #12121c 0%, #1e1e30 100%);
+            color: #eae9e3;
+            padding: 5rem 2rem 4.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -40%; left: -20%;
+            width: 70%; height: 180%;
+            background: radial-gradient(circle at 30% 50%, rgba(182, 58, 42, 0.06), transparent 70%);
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 350;
+            letter-spacing: 2px;
+            margin-bottom: 0.75rem;
+            position: relative;
+            z-index: 1;
+        }
+        .hero h1 span {
+            font-weight: 600;
+            color: #d9a066;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 36rem;
+            margin: 0 auto 1.6rem;
+            opacity: 0.8;
+            position: relative;
+            z-index: 1;
+        }
+        .hero .tagline {
+            display: inline-block;
+            border: 1px solid rgba(233, 222, 200, 0.3);
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(2px);
+            background: rgba(30, 30, 48, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 浅色正文区 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 3rem;
+        }
+
+        /* 再次访问小引 */
+        .visit-note {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2.2rem;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            border-left: 4px solid #b63a2a;
+        }
+        .visit-note h2 {
+            font-size: 1.5rem;
+            font-weight: 450;
+            margin-bottom: 0.6rem;
+            color: #1a1a28;
+        }
+        .visit-note p {
+            color: #3b3b48;
+            max-width: 680px;
+        }
+
+        /* 三个场景模块 — 卡片网格 */
+        .scene-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin: 2.8rem 0 2.4rem;
+        }
+        .scene-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.5rem 1.8rem;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.02);
+            transition: transform 0.15s, box-shadow 0.2s;
+            border: 1px solid #eee;
+        }
+        .scene-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+        }
+        .scene-card .emoji-badge {
+            display: inline-block;
+            font-size: 1.8rem;
+            margin-bottom: 0.4rem;
+        }
+        .scene-card h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin: 0.2rem 0 0.5rem;
+            color: #1e1e2a;
+        }
+        .scene-card p {
+            color: #4a4a58;
+            font-size: 0.95rem;
+        }
+        .scene-card a {
+            font-weight: 500;
+        }
+
+        /* 常见说明 (FAQ 摘要) */
+        .faq-summary {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2.2rem;
+            margin: 2rem 0 1.2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+        .faq-summary h2 {
+            font-size: 1.5rem;
+            font-weight: 450;
+            margin-bottom: 1.2rem;
+            color: #1a1a28;
+        }
+        .faq-item {
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid #f0ece7;
+            padding-bottom: 1rem;
+        }
+        .faq-item:last-child {
+            border-bottom: 0;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .faq-item strong {
+            display: block;
+            font-weight: 500;
+            color: #2a2a3a;
+            margin-bottom: 0.25rem;
+        }
+        .faq-item p {
+            color: #4a4a58;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* 页脚 */
+        .footer-note {
+            text-align: center;
+            margin-top: 3.2rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #e3ddd5;
+            font-size: 0.9rem;
+            color: #6f6f7a;
+        }
+        .footer-note a {
+            color: #6f6f7a;
+            border-bottom-color: rgba(111,111,122,0.2);
+        }
+        .footer-note a:hover {
+            color: #b63a2a;
+            border-bottom-color: #b63a2a;
+        }
+
+        /* 响应式 */
+        @media (max-width: 800px) {
+            .hero h1 { font-size: 2.2rem; }
+            .scene-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 540px) {
+            .hero { padding: 3rem 1.2rem 3.2rem; }
+            .hero h1 { font-size: 1.9rem; }
+            .scene-grid { grid-template-columns: 1fr; }
+            .container { padding: 1.8rem 1rem; }
+            .visit-note, .faq-summary { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <header class="hero">
+        <h1>再次回到 <span>开云</span></h1>
+        <p>一个值得持续关注的空间 · 收藏即重逢</p>
+        <div class="tagline">知识 · 场景 · 长期主义</div>
+    </header>
+
+    <!-- 核心介绍 + 收藏提示 -->
+    <div class="container">
+        <section class="visit-note">
+            <h2>重新打开这本书</h2>
+            <p>
+                对于经常回来的访客，<a href="https://jiankaiyun.com.cn">开云</a> 更像一处可以反复翻阅的数字角落。
+                每一次访问，既是对过往笔记的温习，也可能遇见新的编排与线索。
+                如果你曾将它加入书签，或许会发现内容结构在缓慢迭代——这种不张扬的变化，本身就是一种邀请。
+            </p>
+            <p style="margin-top:0.8rem;">
+                保持关注的方式很简单：收藏当前页面，或偶尔在地址栏直接输入 jiankaiyun.com.cn。
+                无需注册，也没有推送负担，纯粹的按需回访。
+            </p>
+        </section>
+
+        <!-- 三个场景模块 -->
+        <div style="margin-bottom:0.5rem;">
+            <h2 style="font-weight:450; font-size:1.5rem; color:#1a1a28;">三种常见的回访场景</h2>
+            <p style="color:#4a4a58; margin-top:0.2rem;">根据不同需求，再次来到开云的理由各有侧重</p>
+        </div>
+
+        <div class="scene-grid">
+            <div class="scene-card">
+                <div class="emoji-badge">📚</div>
+                <h3>资料整理与回溯</h3>
+                <p>
+                    有用户习惯将 <a href="https://jiankaiyun.com.cn">开云</a> 作为阅读笔记的锚点——这里不堆砌信息，
+                    而是以卡片方式组织观点。适合需要快速找回某个概念或引文的场景。
+                </p>
+            </div>
+            <div class="scene-card">
+                <div class="emoji-badge">🧭</div>
+                <h3>周期性探索</h3>
+                <p>
+                    每隔几周回来一次，页面布局和内容侧重可能已有微妙调整。
+                    这种低频率的变化能带来新鲜感，又不至于让人迷失方向。
+                </p>
+            </div>
+            <div class="scene-card">
+                <div class="emoji-badge">🔖</div>
+                <h3>收藏夹的稳定坐标</h3>
+                <p>
+                    在众多链接中，<a href="https://jiankaiyun.com.cn">开云</a> 是少有的长期维护型项目。
+                    没有突然改版或废弃的风险，适合作为个人数字导航的固定站点。
+                </p>
+            </div>
+        </div>
+
+        <!-- 常见说明 (FAQ 摘要) -->
+        <section class="faq-summary">
+            <h2>常见说明 · 关于持续关注</h2>
+
+            <div class="faq-item">
+                <strong>内容更新的节奏是怎样的？</strong>
+                <p>没有固定周期。更接近“有人维护的静态站点”——每次变动都会保留原有的核心信息层次，仅补充或重组部分模块。</p>
+            </div>
+            <div class="faq-item">
+                <strong>是否需要注册或登录？</strong>
+                <p>不需要。<a href="https://jiankaiyun.com.cn">开云</a> 对所有访客开放，不收集个人数据，也没有会员系统。</p>
+            </div>
+            <div class="faq-item">
+                <strong>收藏页面后，链接会失效吗？</strong>
+                <p>域名和内容结构会保持长期稳定。如果未来有重大调整，会在站内以显著方式提前说明。</p>
+            </div>
+            <div class="faq-item">
+                <strong>可以转载或分享其中的内容吗？</strong>
+                <p>引用少量内容并注明出处通常没有问题。如需大量转载，建议先通过页面底部的联系渠道沟通。</p>
+            </div>
+        </section>
+
+        <!-- 页脚 -->
+        <div class="footer-note">
+            <p>由持续的好奇心驱动 · 再次回到 <a href="https://jiankaiyun.com.cn">开云</a> 永远不晚</p>
+        </div>
+    </div>
+
+</body>
+</html>
